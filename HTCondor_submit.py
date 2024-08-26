@@ -53,7 +53,7 @@ for line in Lines:
 log        = cond/'''+subFiles+'''_part_'''+str(i)+'''.log
 output     = cond/'''+subFiles+'''_part_'''+str(i)+'''.out
 error      = cond/'''+subFiles+'''_part_'''+str(i)+'''.err
-arguments = '''+inFiles+'''_part'''+str(i)+'''.txt '''+outFiles+'''_'''+str(i)+'''.root '''+str(isMC)+'''  '''+str(mult)+'''  '''+str(protonSide)+'''  '''+ZDCfiles+'''
+arguments = '''+inFiles+'''_part'''+str(i)+'''.txt '''+outFiles+'''_'''+str(i)+'''.root '''+str(isMC)+'''  '''+str(mult)+'''  '''+str(protonSide)+'''  '''+ZDCfiles+'''.txt
 queue
 '''
     command_lines += temp
