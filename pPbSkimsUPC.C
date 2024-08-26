@@ -1453,10 +1453,10 @@ void pPbSkim(TString input_file, TString ouputfile, int isMC, int ntrkoff, int l
 
 	Int_t jet_events = heavyIonTree->GetEntries(); // number of events
     // loop through jets and create a key for each event
-    for(int i_entry = 0; i_entry < jet_events; i_entry++){
-       heavyIonTree->GetEntry(i_entry);
+    for(int ii_entry = 0; ii_entry < jet_events; ii_entry++){
+       heavyIonTree->GetEntry(ii_entry);
        unsigned long long key = keyFromRunLumiEvent(run, lumi, event);
-       runLumiEvtToEntryMap[key] = i_entry;
+       runLumiEvtToEntryMap[key] = ii_entry;
     }
 
 	// ========================================== //
@@ -1483,10 +1483,10 @@ void pPbSkim(TString input_file, TString ouputfile, int isMC, int ntrkoff, int l
 
 		//Find matching ZDC event
 		if (ZDC_evt < 0) continue;
-		unsigned long long key = keyFromRunLumiEvent(ZDC_run,ZDC_lumi,ZDC_evt);
+		unsigned long long key = keyFromRunLumiEvent((UInt_t)ZDC_run,(UInt_t)ZDC_lumi,(ULong64_t)ZDC_evt);
        	long long i_entry = -1;
-       	if(runLumiEvtToEntryMap.count(key) == 0) continue; // skip reco event if there is no event match
-       	else i_entry = runLumiEvtToEntryMap.at(key);
+       	if(runLumiEvtToEntryMap.count(key) == 0){ continue; // skip reco event if there is no event match
+       	}else{ i_entry = runLumiEvtToEntryMap.at(key); }
 
 		// ========================================== //
 		//	Read the event to input trees	      //
